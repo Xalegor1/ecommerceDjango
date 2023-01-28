@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Cosso - Clean, Minimal Responsive HTML Template</title>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!--push menu cart -->
+
+    <!-- End cart -->
+    
+    <!--END  Modal content-->
+    <div class="wrappage">
+        <!-- /header -->
+        <div class="main-content space-padding-tb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="customer-page">
+                            <div class="title-page">
+                                <h3>Login Page</h3>
+                            </div>
+                            {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">                            
+                                <strong>{{ form.errors.email }}</strong>
+                                <strong>{{ form.errors.password1 }}</strong>
+                                <strong>{{ form.errors.password2 }}</strong>
+                                <strong>{{ form.errors.username }}</strong>
+                            </div>
+                            {% endif %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert-{{ message.tags }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <form method="POST" class="form-customer form-login">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address *</label>
+                                    <input type="email" class="form-control form-account" id="exampleInputEmail1" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password *</label>
+                                    <input type="password" class="form-control form-account" id="exampleInputPassword1" name="password">
+                                </div>
+                                <div class="form-check">
+                                    <button type="submit" class="btn-login hover-white">Login</button>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input">
+                                        <span>Remember me</span>
+                                    </label>
+                                    <a href="" class="lost-password">Lost your password?</a>
+                                </div>
+                            </form>
+                            <span class="divider"></span>
+                            <a href="{% url 'register' %}" class="btn link-button create-account hover-black">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="scroll_top">SCROLL TO TOP<span></span></a>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
