@@ -10120,8 +10120,8 @@ span.star:before {
       color: #a4a4a4;
       margin: 35px 0 40px 0; }
     .product-grid.product-list .product-item .product-info-ver2 .product-price {
-      font-size: 20px;
-      color: #868686;
+      font-size: 25px;
+      color: #000000;
       display: block;
       margin-bottom: 45px; }
     .product-grid.product-list .product-item .product-info-ver2 .product-after-switch {
@@ -14345,4 +14345,10 @@ footer.footer-absolute .newletter-form .btn-submit i {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
 
+
+
+.category-name-main{
+  color: #7e0101;
+  font-size: 13px;
+}
 /*# sourceMappingURL=style.css.map */
