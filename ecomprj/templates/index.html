@@ -9,28 +9,20 @@
                 <div class="container container-42">
                     <h1 class="page-title white">Shop</h1>
                     <ul class="breadcrumb white">
-                        <li><a href="">home</a></li>
+                        <li><a href="{% url 'index' %}">home</a></li>
                         <!-- <li><a href="">Shop All Products</a></li> -->
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="nav nav-tabs nav-justified nav-filter white">
-            <ul class="owl-carousel owl-theme js-owl-category">
-                <li class="active"><a href="{% url 'products-list' %}">All</a></li>
-                <li><a href="#women">Women</a></li>
-                <li><a href="#access">Accesories</a></li>
-                <li><a href="#gagets">Gagets</a></li>
-                <li><a href="#edit">Editorials</a></li>
-            </ul>
-        </div>
+       
     </div>
     <div class="wrap-filter">
         <div class="wrap-filter-box wrap-filter-number">
             <ul class="pagination">
-                <li class="active"><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">6</a></li>
+                <li class="active"><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
             </ul>
             <span class="total-count">Showing 1-12 of 30 products</span>
         </div>
@@ -227,7 +219,7 @@
                                         <a href="#" class="btn-quickview">QUICK VIEW</a>
                                     </div>
                                     <div class="product-info-ver2">
-                                        <a href="#" class="category-name-main">{{ p.category.title }}</p>                                                
+                                        <a href="{% url 'category-product-list' p.category.cid %}">{{ p.category.title }}</p>                                                
                                         <h3 class="product-title"><a href="#">{{ p.title }}</a></h3>
                                         
                                         <div class="rating-star">

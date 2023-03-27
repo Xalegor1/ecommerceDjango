@@ -113,7 +113,7 @@
                 </div>
                 <!--end topbar-left-->
                 <div class="logo hidden-xs hidden-sm">
-                    <a href="" title="home-logo"><img src="{% static 'img/eyes.png' %}" alt="logo" class="img-reponsive"></a>
+                    <a href="" title="home-logo"><img src="{% static 'img/cosre.png' %}" alt="logo" class="img-reponsive"></a>
                 </div>
                 <!--end logo-->
                 <div class="topbar-right">
@@ -168,44 +168,14 @@
                                             <li class="level2"><a href="home_bestselling.html" title="Home Bestselling">Home Bestselling</a></li>
                                         </ul>
                                     </li>
-                                    <li class="level1 dropdown hassub"><a href="#">Shop</a>
+                                    <li class="level1 active dropdown">
+                                        <a href="#">Categories</a>
                                         <span class="plus js-plus-icon"></span>
-                                        <div class="menu-level-1 dropdown-menu">
-                                            <ul class="level1">
-                                                <li class="level2 col-6">
-                                                    <a href="#">Shop pages</a>
-                                                    <ul class="menu-level-2 col-6">
-                                                        <li class="level3"><a href="cart_page_emty.html" title="Cart Empty">Cart Empty</a></li>
-                                                        <li class="level3"><a href="Cart_page_Prodcut.html" title="Shopping Cart">Shopping Cart</a></li>
-                                                        <li class="level3"><a href="checkout.html" title="Checkout">Checkout</a></li>
-                                                    </ul>
-                                                    <div class="mega-product col-6">
-                                                        <a href="#"><img src="{% static 'img/mega_1.jpg' %}" alt="" class="img-responsive"></a>
-                                                    </div>
-                                                    <div class="cleafix"></div>
-                                                </li>
-                                                <li class="level2 col-6">
-                                                    <a href="#">Product demo</a>
-                                                    <ul class="menu-level-2 col-6">
-                                                        <li class="level3"><a href="single_product_simple.html" title="Product Simple">Product — Simple</a></li>
-                                                        <li class="level3"><a href="single_product_variable.html" title="Product Variable">Product — Variable</a></li>
-                                                        <li class="level3"><a href="single_product_downloadable.html" title="Product Downloadable">Product — Downloadable</a></li>
-                                                        <li class="level3"><a href="single_Product_Grouped.html" title="Product Grouped">Product — Grouped</a></li>
-                                                        <li class="level3"><a href="single_product_affiliate.html" title="Product Affiliate">Product — External / Affiliate</a></li>
-                                                        <li class="level3"><a href="single_product_bundle.html" title="Product bundle">Product with bundle</a></li>
-                                                        <li class="level3"><a href="single_product_360.html" title="Product 360">Product 360 Degree View</a></li>
-                                                        <li class="level3"><a href="single_product_video.html" title="Product Featured Video">Product Video</a></li>
-                                                        <li class="level3"><a href="single_product_fullwidth.html" title="Product Fullwidth">Product Fullwidth</a></li>
-                                                        <li class="level3"><a href="single_product_sticky_detail.html" title="Product Sticky Detail">Product Sticky Detail</a></li>
-                                                    </ul>
-                                                    <div class="mega-product col-6">
-                                                        <a href="#"><img src="{% static 'img/mega_2.jpg' %}" alt="" class="img-responsive"></a>
-                                                    </div>
-                                                    <div class="cleafix"></div>
-                                                </li>
-                                            </ul>
-                                            <div class="clearfix"></div>
-                                        </div>
+                                        <ul class="dropdown-menu menu-level-1">
+                                        {% for categ in categories %}
+                                            <li class="level2"><a href="{% url 'category-product-list' categ.cid %}" title="Login">{{ categ.title }}</a></li>
+                                        {% endfor %}
+                                        </ul>
                                     </li>
                                     <li class="level1 active dropdown">
                                         <a href="#">Pages</a>
