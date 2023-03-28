@@ -51,7 +51,10 @@ def prod_lst_categ_view(request, cid):
 def prod_detail_view(request, pid):
     # product = Product.objects.get(pid=pid)
     product = get_object_or_404(Product, pid=pid)
+    p_image = product.p_images.all()
+
     context = {
-        "product": product
+        "prod": product,
+        "p_image": p_image,
     }
     return render(request, "product-detail.html", context)

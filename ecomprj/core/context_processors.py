@@ -6,3 +6,5 @@ def default(request):
     return {
         "categories":  categories
     }
+
+# def log_register(request):

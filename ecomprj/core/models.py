@@ -89,7 +89,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to=user_directory_path, default="product.jpg")
     description = models.TextField(null=True, blank=True, default="This is the product")
 
-    price = models.DecimalField(max_digits=99999999999, decimal_places=2, default="1.99")
+    price = models.IntegerField(default="2")
     old_price = models.DecimalField(max_digits=99999999999, decimal_places=2, default="2.99")
 
     specifications = models.TextField(null=True, blank=True)
@@ -124,8 +124,7 @@ class Product(models.Model):
 
 class ProductImages(models.Model):
     images = models.ImageField(upload_to="product-images", default="product.jpg")
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    date = models.DateTimeField(auto_created=True)
+    product = models.ForeignKey(Product, related_name="p_images",on_delete=models.SET_NULL, null=True)
 
 
     class Meta:
