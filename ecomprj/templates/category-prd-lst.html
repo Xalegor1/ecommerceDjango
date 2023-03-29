@@ -19,9 +19,9 @@
     <div class="wrap-filter">
         <div class="wrap-filter-box wrap-filter-number">
             <ul class="pagination">
-                <li class="active"><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">6</a></li>
+                <li class="active"><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
             </ul>
         </div>
         <div class="wrap-filter-box text-center view-mode">
@@ -212,13 +212,13 @@
                                 {% for p in products %}
                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product-item">
                                     <div class="product-images">
-                                        <a href="#" class="hover-images effect"><img src="{{ p.image.url }}" alt="photo" class="img-reponsive"></a>
+                                        <a href="{% url 'prod-detail' p.pid %}" class="hover-images effect"><img src="{{ p.image.url }}" alt="photo" class="img-reponsive"></a>
                                         <a href="#" class="btn-add-wishlist ver2"><i class="icon-heart"></i></a>
                                         <a href="#" class="btn-quickview">QUICK VIEW</a>
                                     </div>
                                     <div class="product-info-ver2">
                                         <a href="{% url 'category-product-list' category.cid %}" class="category-name-main">{{ p.category.title }}</p>                                                
-                                        <h3 class="product-title"><a href="#">{{ p.title }}</a></h3>
+                                        <h3 class="product-title"><a href="{% url 'prod-detail' p.pid %}">{{ p.title }}</a></h3>
                                         
                                         <div class="rating-star">
                                             <span class="star star-5"></span>

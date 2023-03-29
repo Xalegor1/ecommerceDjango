@@ -9,7 +9,7 @@ urlpatterns = [
     path('prod-detail/<pid>/', views.prod_detail_view, name='prod-detail'),
 
     # Category
-    path('category/', views.category_list_view, name="category-list"),
+    # path('category/', views.category_list_view, name="category-list"),
     path('category/<cid>/', views.prod_lst_categ_view, name="category-product-list"),
 
 ]

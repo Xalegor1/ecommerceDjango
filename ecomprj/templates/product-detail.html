@@ -49,8 +49,8 @@
         <div class="container container-42">
             <ul class="breadcrumb">
                 <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="#">Man</a></li>
-                <li class="active"><a href="#">Hooded Coat</a></li>
+                <li><a href="{% url 'category-product-list' prod.category.cid %}">{{ prod.category }}</a></li>
+                <li class="active"><a href="#">{{ prod.title }}</a></li>
             </ul>
         </div>
         <div class="container">
@@ -142,11 +142,10 @@
         <div class="information">
             <ul>
                 <li class="info-center text-center"><span>SKU :</span>
-                    <a href="">004004</a>
+                    <a href="">{{ prod.sku }}</a>
                 </li>
                 <li class="info-center bd-rl text-center"><span>Categories :</span>
-                    <a href="">Hoodies</a>,
-                    <a href="">Accessories</a>
+                    <a href="{% url 'category-product-list' prod.category.cid %}">{{ prod.category }}</a>
                 </li>
                 <li class="info-center text-center"><span>Tags :</span>
                     <a href="">Designer</a>,
@@ -158,16 +157,17 @@
             <div class="container container-42">
                 <h3 class="title text-center">Related Products</h3>
                 <div class="owl-carousel owl-theme js-owl-product">
+                    {% for p in products %}
                     <div class="product-item">
                         <div class="product-images">
-                            <a href="#" class="hover-images effect"><img src="{% static 'img/products/sunglasses_1.jpg' %}" alt="photo" class="img-reponsive"></a>
+                            <a href="{% url 'prod-detail' p.pid %}" class="hover-images effect"><img src="{{ p.image.url }}" alt="products" class="img-reponsive"></a>
                             <a href="#" class="btn-add-wishlist ver2"><i class="icon-heart"></i></a>
                             <a href="#" class="btn-quickview">QUICK VIEW</a>
                         </div>
                         <div class="product-info-ver2">
-                            <h3 class="product-title"><a href="#">Large Cube Planter</a></h3>
+                            <h3 class="product-title"><a href="#">{{ p.title }}</a></h3>
                             <div class="product-after-switch">
-                                <div class="product-price">$295.00</div>
+                                <div class="product-price">${{ p.price }}</div>
                                 <div class="product-after-button">
                                     <a href="#" class="addcart">ADD TO CART</a>
                                 </div>
@@ -181,7 +181,8 @@
                             </div>
                             <div class="product-price">$292.00</div>
                         </div>
-                    </div>
+                    </div> 
+                    {% endfor %}                  
                 </div>
             </div>
         </div>
