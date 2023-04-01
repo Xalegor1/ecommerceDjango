@@ -7192,8 +7192,9 @@ body {
       color: #a4a4a4; }
   .comment .comment-content {
     margin-top: 18px;
-    color: #a4a4a4;
-    font: 14px/24px "Poppins", sans-serif; }
+    color: #3d3636;
+    font: 20px/32px "Poppins", sans-serif;
+    text-align-last: auto;}
   .comment .comment-post-reply {
     float: right; }
     .comment .comment-post-reply a {
@@ -11135,7 +11136,7 @@ span.star:before {
       .single-product-tab .product-info-ver2 .product-title {
         font-size: 20px; } }
     .single-product-tab .product-info-ver2 .product-title a {
-      font-size: 30px;
+      font-size: 18px;
       color: #000; }
       @media (max-width: 767px) {
         .single-product-tab .product-info-ver2 .product-title a {

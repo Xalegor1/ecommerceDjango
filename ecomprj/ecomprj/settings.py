@@ -40,9 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Own
     'core',
     'userauth',
+    
+    # Other
     'widget_tweaks',
+    'taggit',
+    'ckeditor',
+    
 ]
 
 MIDDLEWARE = [
@@ -147,3 +153,22 @@ AUTH_USER_MODEL = 'userauth.User'
 
 # LOGIN_REDIRECT_URL = '/'
 # LOGIN_URL = 'login'
+
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'codeSnippet_theme': 'monokai',
+        'toolbar': 'all',
+        'extraPlugins': ', '.join(
+            [
+                'codesnippet',
+                'widget',
+                'dialog'
+            ]
+        ),
+    }
+}
+

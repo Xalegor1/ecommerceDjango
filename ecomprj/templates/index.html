@@ -24,7 +24,7 @@
                 <li><a href="">2</a></li>
                 <li><a href="">3</a></li>
             </ul>
-            <span class="total-count">Showing 1-12 of 30 products</span>
+            <span class="total-count">Showing {{ products.count }} product{{ products.count|pluralize:"s" }}</span>
         </div>
         <div class="wrap-filter-box text-center view-mode">
             <a class="col" href="#" onClick="return false;"><span class="icon-grid-img"></span></a>
@@ -105,7 +105,7 @@
         <div class="wrap-filter-box text-center view-mode">
             <a class="list" href="#" onClick="return false;"><span class="icon-list-img"></span></a>
         </div>
-        <div class="wrap-filter-box wrap-filter-sorting">
+        <!-- <div class="wrap-filter-box wrap-filter-sorting">
             <button class="dropdown-toggle" type="button" data-toggle="dropdown" id="menu2">Sort by newness
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="menu2">
@@ -113,99 +113,12 @@
                 <li><a href="#" title="">Best Selling</a></li>
                 <li><a href="#" title="">Best Selling</a></li>
             </ul>
-        </div>
+        </div> -->
         <div class="clearfix"></div>
     </div>
     <div class="container container-42 shop-sidebar">
         <div class="row">
-            <div class="col-md-3 col-sm-3 collection-sidebar">
-                <div class="product-standard filter-product">
-                    <div class="filter filter-price">
-                        <h3 class="filtertitle">
-                            By price.
-                        </h3>
-                        <div class="filter-content">
-                            <div class="price-range-holder">
-                                <input type="text" class="price-slider" value="">
-                            </div>
-                            <span class="min-max">
-                                Price: $30 — $3450
-                            </span>
-                            <span class="filter-title">
-                                
-                            </span>
-                        </div>
-                    </div>
-                    <div class="filter filter-category">
-                        <h3 class="filtertitle">
-                            Categories.
-                        </h3>
-                        <ul class="filter-content js-filter-menu">
-                            <li><a href="">Outerwear</a></li>
-                            <li><a href="">Dresses</a>
-                                <span class="plus js-plus-icon"></span>
-                                <ul class="filter-menu">
-                                    <li class=""><a href="#">Drop menu 1</a></li>
-                                    <li class=""><a href="#">Drop menu 2</a></li>
-                                    <li class=""><a href="#">Drop menu 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Gadgets</a></li>
-                            <li><a href="">Hoodies</a>
-                                <span class="plus js-plus-icon"></span>
-                                <ul class="filter-menu">
-                                    <li class=""><a href="#">Drop menu 1</a></li>
-                                    <li class=""><a href="#">Drop menu 2</a></li>
-                                    <li class=""><a href="#">Drop menu 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Men</a></li>
-                            <li><a href="">Shirts & Blouses</a>
-                                <span class="plus js-plus-icon"></span>
-                                <ul class="filter-menu">
-                                    <li class=""><a href="#">Drop menu 1</a></li>
-                                    <li class=""><a href="#">Drop menu 2</a></li>
-                                    <li class=""><a href="#">Drop menu 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Shoes</a></li>
-                        </ul>
-                    </div>
-                    <div class="filter filter-color">
-                        <h3 class="filtertitle">
-                           By color. 
-                        </h3>
-                        <ul class="filter-content">
-                            <li><a href="">Grey</a></li>
-                            <li><a href="">Metallic</a></li>
-                            <li><a href="">Multicolour Nude</a></li>
-                            <li><a href="">Pink</a></li>
-                            <li><a href="">Purple</a></li>
-                            <li><a href="">Red White</a></li>
-                        </ul>
-                    </div>
-                    <div class="filter filter-size">
-                        <h3 class="filtertitle">
-                            By size
-                        </h3>
-                        <div class="filter-content">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Choose any size...
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">XXL</a></li>
-                                    <li><a href="#">XL</a></li>
-                                    <li><a href="#">L</a></li>
-                                    <li><a href="#">M</a></li>
-                                    <li><a href="#">S</a></li>
-                                    <li><a href="#">xS</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+            
             <div class="col-md-9 col-sm-9 collection-list">
                 <div class="product-standard product-grid product-list">
                     <div class="tab-content">
@@ -222,13 +135,13 @@
                                         <a href="{% url 'category-product-list' p.category.cid %}">{{ p.category.title }}</p>                                                
                                         <h3 class="product-title"><a href="{% url 'prod-detail' p.pid %}">{{ p.title }}</a></h3>
                                         
-                                        <div class="rating-star">
+                                        <!-- <div class="rating-star">
                                             <span class="star star-5"></span>
                                             <span class="star star-4"></span>
                                             <span class="star star-3"></span>
                                             <span class="star star-2"></span>
                                             <span class="star star-1"></span>
-                                        </div>
+                                        </div> -->
                                         <p class="product-desc">{{ p.description }} </p>
                                         <p class="product-desc">Made By {{ p.vendor.title }} </p>
                                         <div class="product-price">{{ p.price }}$</div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Product, Category, Vendor, ProductImages, CartOrder, CartOrderItems, ProductReview, WishList, Address
-
+from taggit.models import Tag
 
 def index(request):
     products = Product.objects.all().order_by("-id")
@@ -28,7 +28,7 @@ def product_list(request):
 def category_list_view(request):
     categories = Category.objects.all()
     context = {
-        "categories": categories
+        "categories": categories,
     }
     return render(request, "category-list.html", context)
 
@@ -55,9 +55,43 @@ def prod_detail_view(request, pid):
 
     products = Product.objects.filter(category=product.category).exclude(pid=pid)
 
+    # Getting all reviews
+    reviews = ProductReview.objects.filter(product=product, )
+
     context = {
         "prod": product,
         "p_image": p_image,
+        'reviews': reviews,
         "products": products,
     }
     return render(request, "product-detail.html", context)
+
+
+def tag_list(request, tag_slug=None):
+    products = Product.objects.filter(product_status="published").order_by('-id')
+
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        products = products.filter(tags__in=[tag])
+
+    context = {
+        "products": products, 
+        "tag": tag, 
+        
+    }
+    return render(request, "tag.html", context)
+
+
+
+
+def search_view(request):
+    query = request.GET.get("q")
+    products = Product.objects.filter(title__icontains=query).order_by("-date")
+
+    context = {
+        "products": products, 
+        "query": query,
+    }
+
+    return render(request, "search.html", context)

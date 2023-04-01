@@ -46,11 +46,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="input-group">
-                        <form method="get" class="searchform" action="/search" role="search">
+                        <form method="GET" class="searchform" action="{% url 'search' %}" role="search">
                             <input type="hidden" name="type" value="product">
                             <input type="text" name="q" class="form-control control-search">
                             <span class="input-group-btn">
-                              <button class="btn btn-default button_search" type="button"><i data-toggle="dropdown" class="fa fa-search"></i></button>
+                              <button class="btn btn-default button_search" type="submit"><i data-toggle="dropdown" class="fa fa-search" ></i></button>
                             </span>
                         </form>
                     </div>
@@ -181,8 +181,11 @@
                                         <a href="#">Pages</a>
                                         <span class="plus js-plus-icon"></span>
                                         <ul class="dropdown-menu menu-level-1">
-                                            <li class="level2"><a href="login.html" title="Login">Login</a></li>
-                                            <li class="level2"><a href="register.html" title="Register">Register</a></li>
+                                            {% if request.user.is_authenticated %}
+                                            <li class="level2"><a href="{% url 'logout' %}" title="Login">Logout</a></li>
+                                            {% else %}
+                                            <li class="level2"><a href="{% url 'login' %}" title="Register">Login</a></li>
+                                            {% endif %}
                                         </ul>
                                     </li>
                                     <li class="level1 dropdown hassub">
