@@ -1,4 +1,4 @@
-from core.models import Category
+from core.models import Category, Product
 from django.shortcuts import render, redirect
 from userauth.forms import UserRegisterForm
 from django.contrib import messages

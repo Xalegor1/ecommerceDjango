@@ -36,29 +36,33 @@
                     <div class="product-filter-inner text-left">
                         <div class="product-filter">
                             <div class="form-group">
-                                <span class="title-filter">Category</span>
-                                <button class="dropdown-toggle form-control" type="button" data-toggle="dropdown">Select a category
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>Select a category</li>
-                                    <li>Backpacks</li>
-                                    <li>Decoration</li>
-                                    <li>Essentials</li>
-                                    <li>Interior</li>
-                                </ul>
+                                <span class="title-filter">Categories</span>
+                                <!-- <button class="dropdown-toggle form-control" type="button" data-toggle="dropdown">Select a category
+                                </button> -->
+                                <ul>
+                                    {% for c in categories %}
+                                        <li>
+                                            <input data-filter="category" type="checkbox" name="checkbox" id="exampleCheckbox1" class="form-check-input filter-checkbox" value="{{ c.id }}">
+                                            <a class="title-filter" href="">{{ c.title }}</a>
+                                        </li>
+                                        <!-- <li>Decoration</li> -->
+                                    {% endfor %}
+                                <!-- </ul> -->
                             </div>
                         </div>
                         <div class="product-filter">
                             <div class="form-group">
-                                <span class="title-filter">Color</span>
-                                <button class="dropdown-toggle form-control" type="button" data-toggle="dropdown">Choose color
+                                <span class="title-filter">Tag</span>
+                                <button class="dropdown-toggle form-control" type="button" data-toggle="dropdown">Choose a tag
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li>Choose color</li>
+                                    {% for tag in products.tags.all %}
+                                    <li>{{ tag.name }}</li>
                                     <li>Red</li>
                                     <li>Blue</li>
                                     <li>Gray</li>
                                     <li>White</li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -91,14 +95,14 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="product-filter-button-group clearfix">
+                    <!-- <div class="product-filter-button-group clearfix">
                         <div class="product-filter-button">
                             <a href="" class="btn-submit">Fillter </a>
                         </div>
                         <div class="product-filter-button">
                             <a href="" class="btn-submit">Clear </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </form>
         </div>
@@ -123,7 +127,7 @@
                 <div class="product-standard product-grid product-list">
                     <div class="tab-content">
                         <div id="all" class="tab-pane fade in active">
-                            <div class="row">
+                            <div class="row" id="filtered-product">
                                 {% for p in products %}
                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product-item">
                                     <div class="product-images">
@@ -228,6 +232,7 @@
     <script src="{% static 'js/slick.min.js' %}"></script>
     <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/function.js' %}"></script>
 </body>
 
 {% endblock content %}

@@ -1,0 +1,32 @@
+
+{% for p in products %}
+<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product-item">
+    <div class="product-images">
+        <a href="{% url 'prod-detail' p.pid %}" class="hover-images effect"><img src="{{ p.image.url }}" alt="photo" class="img-reponsive"></a>
+        <a href="#" class="btn-add-wishlist ver2"><i class="icon-heart"></i></a>
+        <a href="#" class="btn-quickview">QUICK VIEW</a>
+    </div>
+    <div class="product-info-ver2">
+        <a href="{% url 'category-product-list' p.category.cid %}">{{ p.category.title }}</p>                                                
+        <h3 class="product-title"><a href="{% url 'prod-detail' p.pid %}">{{ p.title }}</a></h3>
+        
+        <!-- <div class="rating-star">
+            <span class="star star-5"></span>
+            <span class="star star-4"></span>
+            <span class="star star-3"></span>
+            <span class="star star-2"></span>
+            <span class="star star-1"></span>
+        </div> -->
+        <p class="product-desc">{{ p.description }} </p>
+        <p class="product-desc">Made By {{ p.vendor.title }} </p>
+        <div class="product-price">{{ p.price }}$</div>
+        <div class="product-price"><strike>{{ p.old_price }}$</strike></div>
+        <div class="button-group">
+            <a href="#" class="button add-to-cart">Add to cart</a>
+            <a href="#" class="button add-to-wishlist">Add to wishlist</a>
+            <a href="#" class="button add-view">Quick view</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+            

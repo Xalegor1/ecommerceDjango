@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Product, Category, Vendor, ProductImages, CartOrder, CartOrderItems, ProductReview, WishList, Address
 from taggit.models import Tag
+from django.template.loader import render_to_string
+from django.http import JsonResponse
+
 
 def index(request):
     products = Product.objects.all().order_by("-id")
     categories = Category.objects.all()
-    
 
     context = {
         "products": products,
@@ -95,3 +97,17 @@ def search_view(request):
     }
 
     return render(request, "search.html", context)
+
+
+def filter_product(request):
+    categories = request.GET.getlist('category[]')
+
+    products = Product.objects.filter(product_status="published").order_by("-id").distinct()
+
+    if len(categories) > 0:
+        products = products.filter(category__id__in=categories).distinct()  
+
+    data = render_to_string("zov.html", {"products": products})
+    return JsonResponse({"data": data})
+
+
