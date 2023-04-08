@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
+    <style>
+        .bankai {
+            display: block;
+            width: 100%;
+            height: calc(2.25rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #bdbdbd;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+    </style>
+
 <body>
     <div class="page-heading">
         <div class="banner-heading">
@@ -67,29 +87,25 @@
                             </div>
                         </div>
                         <div class="product-filter">
-                            <div class="form-group">
-                                <span class="title-filter">Size</span>
-                                <button class="dropdown-toggle form-control" type="button" data-toggle="dropdown">Choose size
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>Choose size</li>
-                                    <li>S</li>
-                                    <li>M</li>
-                                    <li>L</li>
-                                    <li>XL</li>
-                                </ul>
-                            </div>
+                           
                         </div>
                         <div class="product-filter">
                             <div class="form-group">
                                 <span class="title-filter">Price</span>
                                 <div class="filter-content">
                                     <div class="price-range-holder">
-                                        <input type="text" class="price-slider" value="">
+                                        <input type="range" class="" value="{{ min_max_price.price__min }}" name="range" id="range"  min="{{ min_max_price.price__min }}" max="{{ min_max_price.price__max }}" oninput="max_price.value=this.value">
                                     </div>
                                     <span class="min-max">
-                                    Price: $30 — $3450
-                                </span>
+                                        <div> From: <strong id="slider-range-value1" class="text-brand">${{ min_max_price.price__min }}</strong></div>
+                                        <div> To: <strong id="slider-range-value2" class="text-brand">${{ min_max_price.price__max }}</strong></div> 
+                                    </span>
+                                    <input class="bankai" style="color:black;" type="number" value="{{ min_max_price.price__min }}" id="max_price" min="{{ min_max_price.price__min }}" max="{{ min_max_price.price__max }}" placeholder="Current Price" onkeyup="range.value=this.value">
+                                </div>
+                                <br>
+                                <div class="product-filter-button">
+                                    <button class="btn-submit" id="price-filter-btn" type="button" >Filter</button>
+                                    <!-- <h3 style="color:azure;">{{ min_max_price }}</h3> -->
                                 </div>
                             </div>
                         </div>
