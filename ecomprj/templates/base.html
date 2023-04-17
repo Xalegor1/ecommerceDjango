@@ -32,7 +32,6 @@
             <div class="cart-bottom">
                 <a href="#" class="text">Our Shipping & Return Policy</a>
             </div>
-            <!-- End cart bottom -->
         </div>
     </div>
     <!-- End cart -->
@@ -137,7 +136,7 @@
                         <div class="topbar-cart">
                             <a href="#" class="icon-cart">
                                 <i class="icon-basket f-15"></i>
-                                <span class="count cart-count">0</span>
+                                <span class="count cart-count" id="cart-items-count">{{ request.session.cart_data_obj|length }}</span>
                             </a>
                         </div>
                     </div>
