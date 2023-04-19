@@ -1,0 +1,147 @@
+{% load static %}
+
+<main id="cart-list">
+
+<!--main content-->
+<div class="main-content">
+    <div class="cart-box-container-ver2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Shopping Cart</h3>
+                    <table class="table cart-table space-30">
+                        <tbody>
+                            {% for p_id, item in cart_data.items %}
+                            <tr class="item_cart">
+                                <td class="product-photo"><img src="{{ item.image }}" alt="Futurelife" style="margin-left: -3px;"></td>
+                                <td class="produc-name"><a href="{% url 'prod-detail' item.pid %}" title="">{{ item.title }}</a>
+                                    <div class="quantity input-group">
+                                        <button type="button" class="quantity-left-minus btn btn-number js-minus" data-type="minus" data-field="">
+                                            <span class="minus-icon">-</span>
+                                        </button>
+                                        <input type="text" name="number" value="{{ item.qty }}" class="product_quantity_number js-number">
+                                        <button type="button" class="quantity-right-plus btn btn-number js-plus" data-type="plus" data-field="">
+                                            <span class="plus-icon">+</span>
+                                        </button>
+                                    </div>
+                                    <span class="price" style="font-size: 10px;color: gray;">1 for {{ item.price }}$</span>                                    
+                                </td>
+                                <td class="total-price">
+                                    <button class="remove" data-product="{{ p_id }}">x</button>
+                                    <p class="price">{% widthratio item.price 1 item.qty %}<span>$</span></p>
+                                </td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <a href="" class="btn link-button hover-black continue">Continue Shopping</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <a href="" class="btn link-button hover-black update">Update Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End contact-form -->
+                <div class="col-md-4">
+                    <h3>Coupon</h3>
+                    <div class="contact-form coupon">
+                        <form class="">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-cart" id="inputfname" placeholder="Coupon Code">
+                                <button value="Submit" class="btn link-button link-button-v2 hover-white color-red" type="submit">Apply coupon</button>
+                            </div>
+                        </form>
+                    </div>
+                    <h3>Cart Totals</h3>
+                    <div class="text-price">
+                        <ul>
+                            <li><span class="text">Subtotal</span><span class="number">${{ cart_total_amount|floatformat:2 }}</span></li>
+                            <!-- <li><span class="text">Shipping</span>
+                                <div class="payment">
+                                    <form action="#">
+                                        <input type="radio" name="gender" value="Flat" id="radio1" checked="checked">
+                                        <label for="radio1">Free Shipping</label>
+                                        <input type="radio" name="gender" value="Free" id="radio2">
+                                        <label for="radio2">Standard <span class="number">$20.00</span></label>
+                                        <input type="radio" name="gender" value="Delivery" id="radio3">
+                                        <label for="radio3">Local Pickup</label>
+                                    </form>
+                                </div>
+                            </li> -->
+                            <li><span class="text calculate">Calculate shipping</span>
+                                <form class="zipcode" action="#">
+                                    <input type="text" class="form-control input-cart" placeholder="Zipcode">
+                                </form>
+                            </li>
+                            <li><span class="text">Totals</span><span class="number">${{ cart_total_amount|floatformat:2 }}</span></li>
+                        </ul>
+                    </div>
+                    <a class="btn link-button hover-white checkout" href="#" title="Proceed to checkout">Proceed to checkout</a>
+                </div>
+            </div>
+        </div>
+        <!-- End container -->
+    </div>
+    <!-- End cat-box-container -->
+</div>
+<!-- end main content-->
+<footer>
+    <div class="container container-42">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="menu-footer">
+                    <ul>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="newletter-form">
+                    <h3 class="footer-title text-center">Newsletter</h3>
+                    <form action="#">
+                        <input type="text" name="s" placeholder="Email Adress..." class="form-control">
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                <div class="social">
+                    <a href="#" title="twitter">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" title="facebook">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" title="google plus">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a href="#" title="Pinterest">
+                        <i class="fa fa-pinterest-p"></i>
+                    </a>
+                    <a href="#" title="rss">
+                        <i class="fa fa-rss"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<a href="#" class="scroll_top">SCROLL TO TOP<span></span></a>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-slider.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/function.js' %}"></script>
+
+</main>
+

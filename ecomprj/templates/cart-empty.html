@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+        <!-- /header -->
+        <div class="main-content text-center empty-cart-content space-padding-tb-60">
+            <div class="container">
+                <span class="close-empty-cart"></span>
+                <h3>Your cart is currently empty.</h3>
+                <a href="{% url 'index' %}" class="bordersolid-2 btn-return">Return To Shop <span class="icon-arr"></span></a>
+            </div>
+        </div>
+        <!-- end main content-->
+        <footer>
+            <div class="container container-42">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                        <div class="menu-footer">
+                            <ul>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                        <div class="newletter-form">
+                            <h3 class="footer-title text-center">Newsletter</h3>
+                            <form action="#">
+                                <input type="text" name="s" placeholder="Email Adress..." class="form-control">
+                                <button type="submit" class="btn btn-submit">
+                                    <i class="fa fa-angle-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                        <div class="social">
+                            <a href="#" title="twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                            <a href="#" title="facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                            <a href="#" title="google plus">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                            <a href="#" title="Pinterest">
+                            <i class="fa fa-pinterest-p"></i>
+                        </a>
+                            <a href="#" title="rss">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a href="#" class="scroll_top">SCROLL TO TOP<span></span></a>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    
+{% endblock content %}

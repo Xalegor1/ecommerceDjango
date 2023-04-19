@@ -114,7 +114,7 @@ def filter_product(request):
     if len(categories) > 0:
         products = products.filter(category__id__in=categories).distinct()  
 
-    data = render_to_string("zov.html", {"products": products})
+    data = render_to_string("async/zov.html", {"products": products})
     return JsonResponse({"data": data})
 
 
@@ -143,3 +143,37 @@ def add_to_cart(request):
     else:
         request.session['cart_data_obj'] = cart_product               
     return JsonResponse({'data': request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj'])})
+
+
+
+def cart_view(request):
+    cart_total_amount = 0
+    if 'cart_data_obj' in request.session:
+        for p_id, item in request.session['cart_data_obj'].items():
+            cart_total_amount += int(item['qty']) * float(item['price'])
+        return render(request, 'cart.html', {'cart_data': request.session['cart_data_obj'], 
+                                             'totalcartitems': len(request.session['cart_data_obj']), 
+                                             'cart_total_amount': cart_total_amount
+                                             })
+    else:
+        return render(request, 'cart-empty.html')
+    
+
+def delete_item_from_cart(request):
+    product_id = str(request.GET['id'])
+    if 'cart_data_obj' in request.session:
+        if product_id in request.session['cart_data_obj']:
+            cart_data = request.session['cart_data_obj']
+            del request.session['cart_data_obj'][product_id]
+            request.session['cart_data_obj'] = cart_data
+
+    cart_total_amount = 0
+    if 'cart_data_obj' in request.session:
+        for p_id, item in request.session['cart_data_obj'].items():
+            cart_total_amount += int(item['qty']) * float(item['price'])
+
+    context = render_to_string("async/cart-list.html", {'cart_data': request.session['cart_data_obj'], 
+                                                  'totalcartitems': len(request.session['cart_data_obj']), 
+                                                  'cart_total_amount': cart_total_amount
+                                                  })            
+    return JsonResponse({"data": context, 'totalcartitems': len(request.session['cart_data_obj'])})

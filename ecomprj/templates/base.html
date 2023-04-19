@@ -18,15 +18,16 @@
 </head>
 
 <body>
+    {% block cart %}
     <!--push menu cart -->
     <div class="pushmenu pushmenu-left cart-box-container">
         <div class="cart-list">
             <span class="close-left js-close">x</span>
-            <h3 class="cart-title">Your Cart</h3>
+            <h3 class="cart-title">Your Cart</h3>>
             <div class="nocart-list">
                 <div class="empty-cart">
                     <h4 class="nocart-title">No products in the cart.</h4>
-                    <a href="" class="btn-shop btn-arrow">Start shopping</a>
+                    <a href="{% url 'cart' %}" class="btn-shop btn-arrow">Go To Cart</a>
                 </div>
             </div>
             <div class="cart-bottom">
@@ -34,6 +35,7 @@
             </div>
         </div>
     </div>
+    {% endblock cart %}
     <!-- End cart -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
