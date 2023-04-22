@@ -30,13 +30,9 @@
                                 <td class="product-photo"><img src="{{ item.image }}" alt="Futurelife" style="margin-left: -3px;"></td>
                                 <td class="produc-name"><a href="{% url 'prod-detail' item.pid %}" title="">{{ item.title }}</a>
                                     <div class="quantity input-group">
-                                        <button type="button" class="quantity-left-minus btn btn-number js-minus" data-type="minus" data-field="">
-                                            <span class="minus-icon">-</span>
-                                        </button>
+                                        
                                         <input type="text" name="number" value="{{ item.qty }}" class="product_quantity_number js-number product-qty-{{ p_id }}" class="">
-                                        <button type="button" class="quantity-right-plus btn btn-number js-plus" data-type="plus" data-field="">
-                                            <span class="plus-icon">+</span>
-                                        </button>
+                                        
                                     </div>
                                     <span class="price" style="font-size: 10px;color: gray;">1 for {{ item.price }}$</span>                                                                        
                                 </td>

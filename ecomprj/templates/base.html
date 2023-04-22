@@ -18,24 +18,7 @@
 </head>
 
 <body>
-    {% block cart %}
-    <!--push menu cart -->
-    <div class="pushmenu pushmenu-left cart-box-container">
-        <div class="cart-list">
-            <span class="close-left js-close">x</span>
-            <h3 class="cart-title">Your Cart</h3>>
-            <div class="nocart-list">
-                <div class="empty-cart">
-                    <h4 class="nocart-title">No products in the cart.</h4>
-                    <a href="{% url 'cart' %}" class="btn-shop btn-arrow">Go To Cart</a>
-                </div>
-            </div>
-            <div class="cart-bottom">
-                <a href="#" class="text">Our Shipping & Return Policy</a>
-            </div>
-        </div>
-    </div>
-    {% endblock cart %}
+
     <!-- End cart -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -136,7 +119,7 @@
                             </div>
                         </div>
                         <div class="topbar-cart">
-                            <a href="#" class="icon-cart">
+                            <a href="{% url 'cart' %}" class="icon-cart">
                                 <i class="icon-basket f-15"></i>
                                 <span class="count cart-count" id="cart-items-count">{{ request.session.cart_data_obj|length }}</span>
                             </a>
