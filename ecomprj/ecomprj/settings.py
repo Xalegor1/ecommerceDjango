@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'taggit',
     'ckeditor',
+    'rest_framework',
     
 ]
 

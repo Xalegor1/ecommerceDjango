@@ -1,7 +1,21 @@
 {% load static %}
+{% block content %}
+
+
+<!-- <style>
+        .btn.link-button.hover-black.update:hover {
+    /* стили для состояния hover */
+                background-color: whitesmoke;
+                color: rgb(50, 2, 2);
+        };
+        .btn.link-button.hover-black.continue:hover {
+    /* стили для состояния hover */
+                background-color: #00ee04;
+        };
+</style> -->
+
 
 <main id="cart-list">
-
 <!--main content-->
 <div class="main-content">
     <div class="cart-box-container-ver2">
@@ -10,8 +24,8 @@
                 <div class="col-md-8">
                     <h3>Shopping Cart</h3>
                     <table class="table cart-table space-30">
+                        {% for p_id, item in cart_data.items %}
                         <tbody>
-                            {% for p_id, item in cart_data.items %}
                             <tr class="item_cart">
                                 <td class="product-photo"><img src="{{ item.image }}" alt="Futurelife" style="margin-left: -3px;"></td>
                                 <td class="produc-name"><a href="{% url 'prod-detail' item.pid %}" title="">{{ item.title }}</a>
@@ -19,29 +33,28 @@
                                         <button type="button" class="quantity-left-minus btn btn-number js-minus" data-type="minus" data-field="">
                                             <span class="minus-icon">-</span>
                                         </button>
-                                        <input type="text" name="number" value="{{ item.qty }}" class="product_quantity_number js-number">
+                                        <input type="text" name="number" value="{{ item.qty }}" class="product_quantity_number js-number product-qty-{{ p_id }}" class="">
                                         <button type="button" class="quantity-right-plus btn btn-number js-plus" data-type="plus" data-field="">
                                             <span class="plus-icon">+</span>
                                         </button>
                                     </div>
-                                    <span class="price" style="font-size: 10px;color: gray;">1 for {{ item.price }}$</span>                                    
+                                    <span class="price" style="font-size: 10px;color: gray;">1 for {{ item.price }}$</span>                                                                        
                                 </td>
                                 <td class="total-price">
                                     <button class="remove" data-product="{{ p_id }}">x</button>
                                     <p class="price">{% widthratio item.price 1 item.qty %}<span>$</span></p>
+                                    <button class="btn link-button price hover-black update" data-product="{{ p_id }}">Update Cart</button>
                                 </td>
-                                
                             </tr>
-                            {% endfor %}
                         </tbody>
+                        {% endfor %}
                     </table>
+                    
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <a href="" class="btn link-button hover-black continue">Continue Shopping</a>
+                            <button class="btn link-button hover-black continue">Continue Shopping</button>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <a href="" class="btn link-button hover-black update">Update Cart</a>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- End contact-form -->
@@ -59,18 +72,6 @@
                     <div class="text-price">
                         <ul>
                             <li><span class="text">Subtotal</span><span class="number">${{ cart_total_amount|floatformat:2 }}</span></li>
-                            <!-- <li><span class="text">Shipping</span>
-                                <div class="payment">
-                                    <form action="#">
-                                        <input type="radio" name="gender" value="Flat" id="radio1" checked="checked">
-                                        <label for="radio1">Free Shipping</label>
-                                        <input type="radio" name="gender" value="Free" id="radio2">
-                                        <label for="radio2">Standard <span class="number">$20.00</span></label>
-                                        <input type="radio" name="gender" value="Delivery" id="radio3">
-                                        <label for="radio3">Local Pickup</label>
-                                    </form>
-                                </div>
-                            </li> -->
                             <li><span class="text calculate">Calculate shipping</span>
                                 <form class="zipcode" action="#">
                                     <input type="text" class="form-control input-cart" placeholder="Zipcode">
@@ -142,6 +143,7 @@
 <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/function.js' %}"></script>
-
 </main>
 
+
+{% endblock content %}
