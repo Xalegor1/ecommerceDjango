@@ -141,7 +141,7 @@
                                         </div>
                                         <p class="product-desc">{{ p.description }} </p>
                                         <p class="product-desc">Made By {{ p.vendor.title }} </p>
-                                        <span class="current-product-price-{{ p.id }}">{{ p.price }}</span><span>$</span>                                         <div class="product-price"><strike>{{ p.old_price }}$</strike></div>
+                                        <span class="current-product-price-{{ p.id }}" style="font-size: 25px;">{{ p.price }}</span><span style="font-size: 25px;">$</span>                                         <div class="product-price"><strike>{{ p.old_price }}$</strike></div>
                                         <div class="button-group" style="display: inline-flex">
 
                                             <input type="hidden" value="1" id="product-quantity" class="product-quantity-{{ p.id }}">

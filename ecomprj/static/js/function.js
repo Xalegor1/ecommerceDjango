@@ -234,14 +234,6 @@ $(".btn.link-button.hover-black.update").on('click', function(){
 
 
 
-
-
-
-
-
-
-
-
 // $("#add-to-cart-btn").on("click", function(){
 
 //     let this_val = $(this)

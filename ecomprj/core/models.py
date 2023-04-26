@@ -90,13 +90,13 @@ class Product(models.Model):
     title = models.CharField(max_length=100, default="Fresh Apple")
     image = models.ImageField(upload_to=user_directory_path, default="product.jpg")
     # description = models.TextField(null=True, blank=True, default="This is the product")
-    description = RichTextUploadingField(null=True, blank=True, default="This is the product")
+    description = models.TextField(null=True, blank=True, default="This is the product")
 
     price = models.IntegerField(default="2")
     old_price = models.DecimalField(max_digits=99999999999, decimal_places=2, default="2.99")
 
     # specifications = models.TextField(null=True, blank=True)
-    specifications = RichTextUploadingField(null=True, blank=True)
+    specifications = models.TextField(null=True, blank=True)
     tags = TaggableManager(blank=True)
 
     product_status = models.CharField(choices=STATUS, max_length=10, default="in_review")

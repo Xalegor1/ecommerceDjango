@@ -205,11 +205,7 @@
                     <a href="{% url 'category-product-list' prod.category.cid %}">{{ prod.category }}</a>
                 </li>
                 <li class="info-center text-center">
-                    {% if tags %}
-                        <span>Tags:</span>
-                    {% else %}
-                        <span>Tags: None</span>
-                    {% endif %}
+                    <span>Tags: </span>
                     {% for tag in prod.tags.all %}
                     <a href="{% url 'tags' tag.slug %}">{{ tag.name }}</a>,
                     {% endfor %}
